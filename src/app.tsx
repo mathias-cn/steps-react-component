@@ -39,7 +39,7 @@ export function App() {
 
       <div className="flex items-center justify-between">
         {currentStep === 1 ? (
-          <ActionButtons disabled="disabled" variant="disabled"> 
+          <ActionButtons disabled={true} variant="disabled"> 
             Prev.
           </ActionButtons>
         ) : (
@@ -49,7 +49,7 @@ export function App() {
         )}
         
         {currentStep === stepsNumber ? (
-          <ActionButtons disabled="disabled" variant="disabled"> 
+          <ActionButtons disabled={true} variant="disabled"> 
             Next
           </ActionButtons>
         ) : (
