@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode } from "react"
+import { ReactNode } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const bubbleVariants = tv({
@@ -16,7 +16,7 @@ const bubbleVariants = tv({
     }
 })
 
-interface ActionButtonsProps extends ComponentProps<'button'>, VariantProps<typeof bubbleVariants> {
+interface ActionButtonsProps extends VariantProps<typeof bubbleVariants> {
     children: ReactNode
 }
 
