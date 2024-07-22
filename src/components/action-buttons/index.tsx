@@ -18,12 +18,13 @@ const buttonVariants = tv({
 
 interface ActionButtonsProps extends ComponentProps<'button'>, VariantProps<typeof buttonVariants> {
     children: ReactNode
+    onClickFunction?: () => void
 }
 
-export function ActionButtons({ children, variant, ...props }: ActionButtonsProps) {
+export function ActionButtons({ children, onClickFunction, variant, ...props }: ActionButtonsProps) {
     return (
         <div className="flex items-center justify-between">
-            <button type="button" {...props} className={buttonVariants({ variant })}>
+            <button onClick={onClickFunction} type="button" {...props} className={buttonVariants({ variant })}>
                 {children}
             </button>
         </div>

@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import { ActionButtons } from "./components/action-buttons";
 import { StepsBubbles } from "./components/steps-bubbles";
 
@@ -13,19 +13,11 @@ export function App() {
   ]
   const stepsNumber = messages.length
 
-  function handleBtnClick(ev: MouseEvent<HTMLButtonElement>) {
-    const target = ev.target as HTMLButtonElement
-    const dataKey = target.getAttribute('data-key')
-
-    if(dataKey == "prev") {
-      currentStep > 1 
-      ? setCurrentStep((currentStep - 1))
-      : null
-    } else {
-      currentStep < stepsNumber 
-      ? setCurrentStep((currentStep + 1))
-      : null
-    }
+  function handlePrevBtnClick() {
+    setCurrentStep(((currentStep) => currentStep - 1))
+  }
+  function handleNextBtnClick() {
+    setCurrentStep(((currentStep) => currentStep + 1))
   }
 
   return (
@@ -35,7 +27,7 @@ export function App() {
         currentStep={currentStep}
       />
 
-      <h2 className="font-semibold text-lg">{messages[currentStep - 1]}</h2>
+      <h2 className="font-semibold text-lg">{`Step ${currentStep}: ${messages[currentStep - 1]}`}</h2>
 
       <div className="flex items-center justify-between">
         {currentStep === 1 ? (
@@ -43,7 +35,7 @@ export function App() {
             Prev.
           </ActionButtons>
         ) : (
-          <ActionButtons onClick={handleBtnClick} data-key="prev"> 
+          <ActionButtons onClickFunction={handlePrevBtnClick}> 
             Prev.
           </ActionButtons>
         )}
@@ -53,7 +45,7 @@ export function App() {
             Next
           </ActionButtons>
         ) : (
-          <ActionButtons onClick={handleBtnClick} data-key="next"> 
+          <ActionButtons onClickFunction={handleNextBtnClick}> 
             Next
           </ActionButtons>
         )}

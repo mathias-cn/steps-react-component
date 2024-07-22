@@ -11,7 +11,7 @@ export function StepsBubbles({ stepsNumber, currentStep }: StepsBubblesProps) {
     return (
         <div className="flex justify-between">
             {stepsArray.map(step => (
-                step === currentStep ? (
+                step <= currentStep ? (
                     <Bubble key={step}>
                     {step}
                     </Bubble>
