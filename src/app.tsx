@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ActionButtons } from "./components/action-buttons";
 import { StepsBubbles } from "./components/steps-bubbles";
+import { StepMessage } from './components/step-message';
 
 export function App() {
   const [currentStep, setCurrentStep] = useState(1)
@@ -27,7 +28,9 @@ export function App() {
         currentStep={currentStep}
       />
 
-      <h2 className="font-semibold text-lg">{`Step ${currentStep}: ${messages[currentStep - 1]}`}</h2>
+      <StepMessage step={currentStep}>
+        {messages[currentStep - 1]}
+      </StepMessage>
 
       <div className="flex items-center justify-between">
         {currentStep === 1 ? (
